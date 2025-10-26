@@ -134,7 +134,7 @@ const SignUp = ({setLoginisOpen, setSignUpisOpen}) => {
 
             {formNumber == 1 && 
                 <div className="bg-white text-black rounded-2xl p-8 flex flex-col gap-6 w-[350px] max-sm:w-[90%] fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-50 ">
-                    <RxCross1 onClick={()=> setLoginisOpen(false)} className="w-5 h-5 cursor-pointer absolute top-4 right-4 text-black/40" />
+                    <RxCross1 onClick={()=> setSignUpisOpen(false)} className="w-5 h-5 cursor-pointer absolute top-4 right-4 text-black/40" />
 
                     <p className="text-center font-[600]">Sign up to QuickShow</p>
                     <p className="text-black/40 text-[15px] text-center">Welcome! please sign up to continue</p>
@@ -156,7 +156,7 @@ const SignUp = ({setLoginisOpen, setSignUpisOpen}) => {
 
             {formNumber == 2 && 
                 <div className="bg-white text-black rounded-2xl p-8 flex flex-col gap-6 w-[350px] max-sm:w-[90%] fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-50 ">
-                    <RxCross1 onClick={()=> setLoginisOpen(false)} className="w-5 h-5 cursor-pointer absolute top-4 right-4 text-black/40" />
+                    <RxCross1 onClick={()=> setSignUpisOpen(false)} className="w-5 h-5 cursor-pointer absolute top-4 right-4 text-black/40" />
 
                     <p className="text-center font-[600]">Sign up to QuickShow</p>
                     <p className="text-black/40 text-[15px] text-center">Welcome! please sign up to continue</p>
@@ -182,7 +182,7 @@ const SignUp = ({setLoginisOpen, setSignUpisOpen}) => {
 
             {formNumber == 3 && 
                 <div className="bg-white text-black rounded-2xl p-8 flex flex-col gap-6 w-[350px] max-sm:w-[90%] fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-50 ">
-                    <RxCross1 onClick={()=> setLoginisOpen(false)} className="w-5 h-5 cursor-pointer absolute top-4 right-4 text-black/40" />
+                    <RxCross1 onClick={()=> setSignUpisOpen(false)} className="w-5 h-5 cursor-pointer absolute top-4 right-4 text-black/40" />
 
                     <p className="text-center font-[600]">Sign up to QuickShow</p>
                     <p className="text-black/40 text-[15px] text-center">Welcome! please sign up to continue</p>

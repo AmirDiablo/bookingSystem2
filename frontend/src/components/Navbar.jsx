@@ -42,7 +42,7 @@ const Navbar = () => {
                     </button>
                 }
 
-                { userButtonIsOpen ? <UserButton /> : null }
+                { userButtonIsOpen ? <UserButton setUserButtonIsOpen={setUserButtonIsOpen} /> : null }
             </div>
 
             
