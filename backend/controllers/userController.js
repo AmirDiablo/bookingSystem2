@@ -18,7 +18,6 @@ const trimer = (value)=> {
 
 const signup = async (req, res)=> {
     const {username, email, password} = req.body
-    console.log(username, email, password)
     const newUsername = validator.trim(username)
     const newEmail = trimer(email)
     const newPassword = trimer(password)
@@ -148,8 +147,6 @@ const getFavorites = async (req, res) => {
                 $replaceRoot: { newRoot: "$movie" }
             }
         ]);
-        
-        console.log(favoritesWithMovies)
 
         res.json({success: true, favoritesWithMovies})
     } catch (error) {

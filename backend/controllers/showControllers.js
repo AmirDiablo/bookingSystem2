@@ -47,12 +47,17 @@ const addShow = async (req, res)=> {
             const movieApiData = await movieDetailsResponse.json()
             const movieCreditsData = await movieCreditsResponse.json()
 
+            console.log(movieApiData)
+
+            let MovieGenres = []
+            movieApiData.genres.map(item=> MovieGenres.push(item.name))
+
             const movieDetails = {
                 _id: movieId,
                 title: movieApiData.title,
                 overview: movieApiData.overview,
                 backdrop_path: movieApiData.backdrop_path,
-                genres: movieApiData.genres,
+                genres: MovieGenres,
                 casts: movieCreditsData.cast,
                 release_date: movieApiData.release_date,
                 original_language: movieApiData.original_language,
@@ -129,4 +134,12 @@ const getShow = async (req, res) => {
     }
 }
 
-module.exports = {getNowPlayingMovies, addShow, getShows, getShow}
+const search = async (req, res) => {
+    const {q} = req.params
+    
+    const movies = await Movie.find({$text: { $search: q }})
+
+    console.log(movies)
+}
+
+module.exports = {getNowPlayingMovies, addShow, getShows, getShow, search}

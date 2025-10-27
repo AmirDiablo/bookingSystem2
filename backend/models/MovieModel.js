@@ -24,7 +24,7 @@ const movieSchema = new mongoose.Schema({
         type: String
     },
     genres: {
-        type: Array, required: true
+        type: [String], required: true
     },
     casts: {
         type: Array, required: true
@@ -37,6 +37,7 @@ const movieSchema = new mongoose.Schema({
     }
 }, {timestamps: true})
 
+movieSchema.index({title: "text", genres: "text"})
 
 const Movie = mongoose.model('Movie', movieSchema);
 module.exports = Movie;

@@ -17,16 +17,18 @@ import ListBookings from './pages/admin/ListBookings'
 import { useUser } from './context/userContext'
 import Login from './components/Login'
 import Loading from './components/Loading'
+import SearchBar from './components/SearchBar'
 
 function App() {
 
   const isAdminRoute = useLocation().pathname.startsWith('/admin');
-  const {user} = useUser()
+  const {user, isSearching} = useUser()
 
   return (
     <>
       <Toaster />
       {!isAdminRoute && <Navbar />}
+      
         <Routes>
           <Route path='/' element={<Home />} />
           <Route path='/movies' element={<Movies />} />

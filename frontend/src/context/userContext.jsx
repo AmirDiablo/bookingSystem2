@@ -12,6 +12,7 @@ export const UserProvider = ({ children })=> {
     const [isAdmin, setIsAdmin] = useState(false)
     const [shows, setShows] = useState([])
     const [favorites, setFavorites] = useState([])
+    const [isSearching, setIsSearching] = useState(false)
 
     const image_base_url = import.meta.env.VITE_TMDB_IMAGE_BASE_URL
 
@@ -123,7 +124,7 @@ export const UserProvider = ({ children })=> {
     console.log("user from context: ", user);
     
     return (
-        <UserContext.Provider value={{user, setUser, login, updateProfile, logout, shows, fetchFavoriteMovies, fetchIsAdmin, fetchShows, isAdmin, image_base_url, favorites}}>
+        <UserContext.Provider value={{user, setUser, login, updateProfile, logout, shows, fetchFavoriteMovies, fetchIsAdmin, fetchShows, isAdmin, image_base_url, favorites, isSearching, setIsSearching}}>
             {children}
         </UserContext.Provider>
     )

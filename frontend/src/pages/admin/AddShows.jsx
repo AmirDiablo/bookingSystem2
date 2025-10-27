@@ -88,8 +88,6 @@ const AddShows = () => {
                 showPrice: Number(showPrice)
             }
 
-            console.log(payload)
-
             const response = await fetch("http://localhost:3000/api/show/add", {
                 method: "POST",
                 body: JSON.stringify(payload),
