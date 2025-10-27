@@ -135,11 +135,15 @@ const getShow = async (req, res) => {
 }
 
 const search = async (req, res) => {
-    const {q} = req.params
-    
-    const movies = await Movie.find({$text: { $search: q }})
-
-    console.log(movies)
+    try {
+        const {q} = req.params
+        const movies = await Movie.find({$text: { $search: q }})
+        console.log(movies)
+        res.json({success: true, results: movies})
+    } catch (error) {
+        console.error(error)
+        res.json({success: false, error: error.message})
+    }
 }
 
 module.exports = {getNowPlayingMovies, addShow, getShows, getShow, search}

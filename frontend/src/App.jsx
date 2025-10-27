@@ -18,6 +18,7 @@ import { useUser } from './context/userContext'
 import Login from './components/Login'
 import Loading from './components/Loading'
 import SearchBar from './components/SearchBar'
+import Result from './pages/Result'
 
 function App() {
 
@@ -36,6 +37,7 @@ function App() {
           <Route path='/movies/:id/:date' element={<SeatLayout />} />
           <Route path='/my-bookings' element={<MyBookings />} />
           <Route path='/favourite' element={<Favourite />} />
+          <Route path='/result' element={<Result />} />
           <Route path='/loading/:nextUrl' element={<Loading />} />
           <Route path='/admin/*' element={user ? <Layout /> : (<div className='min-h-screen flex justify-center items-center'><Login /></div>)}>
             <Route index element={<Dashboard />} />

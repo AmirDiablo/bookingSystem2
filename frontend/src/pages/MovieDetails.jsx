@@ -30,8 +30,6 @@ const MovieDetails = () => {
         }
     }
 
-    console.log("favs: ", favorites)
-
     const handleFavorite = async ()=> {
         try {
             if(!user) return toast.error("Please login to proceed")
@@ -56,6 +54,8 @@ const MovieDetails = () => {
         }
     }
 
+    console.log(show)
+
     useEffect(()=> {
         getShow()
     }, [id])
@@ -79,7 +79,7 @@ const MovieDetails = () => {
                     <p className="text-gray-400 mt-2 text-sm leading-tight max-w-xl">{show.movie.overview}</p>
 
                     <p>
-                        {timeFormat(show.movie.runtime)} • {show.movie.genres.map(genre => genre.name).join(", ")} • {show.movie.release_date.split("-")[0]}
+                        {timeFormat(show.movie.runtime)} • {show.movie.genres.slice(0,2).map(genre => genre).join("|")} • {show.movie.release_date.split("-")[0]}
                     </p>
 
                     <div className="flex items-center flex-wrap gap-4 mt-4">
