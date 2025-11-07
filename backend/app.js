@@ -20,6 +20,11 @@ app.use(bodyParser.json())
 app.use(bodyParser.urlencoded())
 app.use(cors())
 
+app.get("/", (req, res) => {
+  res.send("Backend API is running 🚀");
+});
+
+
 app.use("/api/user", userRoutes)
 app.use("/api/verification", verificationRoute)
 app.use("/uploads", express.static("uploads"))
