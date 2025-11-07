@@ -19,6 +19,9 @@ import Login from './components/Login'
 import Loading from './components/Loading'
 import SearchBar from './components/SearchBar'
 import Result from './pages/Result'
+import ManageAccount from './pages/ManageAccount'
+import EdditProfile from './pages/EditProfile'
+import Sessions from './pages/Sessions'
 
 function App() {
 
@@ -39,6 +42,10 @@ function App() {
           <Route path='/favourite' element={<Favourite />} />
           <Route path='/result' element={<Result />} />
           <Route path='/loading/:nextUrl' element={<Loading />} />
+          <Route path='/manageAccount/*' element={user ? <ManageAccount /> : (<div className='min-h-screen flex justify-center items-center'><Login /></div>)}>
+            <Route index element={<EdditProfile />} />
+            <Route path='sessions' element={<Sessions />} />
+          </Route>
           <Route path='/admin/*' element={user ? <Layout /> : (<div className='min-h-screen flex justify-center items-center'><Login /></div>)}>
             <Route index element={<Dashboard />} />
             <Route path='add-shows' element={<AddShows />} />

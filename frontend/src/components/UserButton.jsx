@@ -23,7 +23,7 @@ const UserButton = ({setUserButtonIsOpen}) => {
             </div>
 
             <div className="flex flex-col *:ml-3 gap-3 *:flex *:items-center *:gap-3 *:cursor-pointer *:text-black/70">
-                <div><IoMdSettings /> <p>Manage account</p></div>
+                <Link to="/manageAccount"><IoMdSettings /> <p>Manage account</p></Link>
                 <Link to="/my-bookings"><LuTicketPlus /> <p>My Bookings</p></Link>
                 <div onClick={()=> {logout(), setUserButtonIsOpen(false)}}><HiOutlineLogout /> <p>Log out</p></div>
                 <div onClick={()=> setSignUpisOpen(true)}><AiOutlinePlus /> <p>Add account</p></div>

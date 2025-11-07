@@ -6,6 +6,8 @@ const mongoose = require("mongoose")
 const Booking = require("../models/BookingModel.js")
 const Favorite = require("../models/FavoriteModel.js")
 const Movie = require("../models/MovieModel.js")
+const fs = require("fs")
+const path = require("path")
 
 // create token
 const createToken = (_id) => {
@@ -83,6 +85,47 @@ const userInfo = async(req, res)=> {
     }
 }
 
+const editProfile = async (req, res)=> {
+    const userId = req.user._id.toString();
+    const { name } = req.body;
+
+    try {
+        let updatedFields = { username: name };
+
+        // اگر فایل جدید آپلود شده باشه، عکس جدید رو اضافه کن
+        if (req.file) {
+            updatedFields.avatar = `http://localhost:3000/uploads/profiles/${req.file.filename}`;
+            
+
+            // عکس قبلی رو حذف کن
+            const currentProfile = await User.findById(userId).select("avatar");
+            if (currentProfile?.avatar) {
+                const avatarUrl = currentProfile.avatar;
+                const filename = path.basename(avatarUrl); // فقط نام فایل رو جدا می‌کنه
+                const oldProfilePath = path.join(__dirname, "../uploads/profiles", filename);
+                console.log(oldProfilePath)
+                if (fs.existsSync(oldProfilePath)) {
+                    console.log("ok")
+                    fs.unlink(oldProfilePath, (err) => {
+                        if (err) console.log("Error deleting old profile:", err);
+                        else console.log("Old profile deleted successfully");
+                    });
+                }
+            }
+        }
+
+        const profilePhoto = await User.findByIdAndUpdate(
+            userId,
+            { $set: updatedFields },
+            { new: true }
+        );
+
+        res.status(200).json(profilePhoto);
+    } catch (error) {
+        res.status(500).json({ message: error.message });
+    }
+}
+
 const getUserBookings = async (req, res) => {
     try{
         const user = req.user._id
@@ -155,4 +198,4 @@ const getFavorites = async (req, res) => {
     }
 }
 
-module.exports = {signup, userLogin, userInfo, continueWithGoogle, getUserBookings, updateFavorite, getFavorites}
+module.exports = {signup, userLogin, userInfo, continueWithGoogle, getUserBookings, updateFavorite, getFavorites, editProfile}
