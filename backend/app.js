@@ -8,8 +8,12 @@ const verificationRoute = require("./routes/verification.js")
 const showRoutes = require("./routes/showRoutes.js")
 const bookingRoutes = require("./routes/bookingRoutes.js")
 const adminRoutes = require("./routes/adminRoutes.js")
+const stripeWebhooks = require("./controllers/stripeWebhooks.js")
 
 const app = express()
+
+//stripe webhooks Route
+app.use('/api/stripe', express.raw({type: "application/json"}), stripeWebhooks)
 
 app.use(cors({
   origin: 'http://localhost:5173',
@@ -23,7 +27,6 @@ app.use(cors())
 app.get("/", (req, res) => {
   res.send("Backend API is running 🚀");
 });
-
 
 app.use("/api/user", userRoutes)
 app.use("/api/verification", verificationRoute)
